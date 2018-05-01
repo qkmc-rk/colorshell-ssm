@@ -27,7 +27,7 @@
 	
 	<!--配置静态资源路径  -->
 	<!--注意，这里讲html这个文件夹的虚拟路径映射为pages，在浏览器里面访问的栗子：www.xxx.com/pages/**   这样就能直接访问/html文件夹下的内容  -->
-	<mvc:resources location="/res/" mapping="/page/**"></mvc:resources>
+	<mvc:resources location="/res/" mapping="/res/**"></mvc:resources>
 	<!--配置静态资源路径后会加载默认映射静态资源的default-servlet,需开启注解支持以加载requestMappingHandler等相关bean.  -->
 	<mvc:annotation-driven>
 	</mvc:annotation-driven>

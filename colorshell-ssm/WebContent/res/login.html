@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>登录 - 彩贝后台管理</title>
+    <meta charset="UTF-8"/>
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="assets/styles.css" rel="stylesheet" media="screen">
+    <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="vendors/jquery-1.9.1.min.js"></script>
+    <script src="js/login/login.js"></script>
+  </head>
+  <body id="login">
+    <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">彩贝 - 后台管理</h2>
+        <input name="mail" id="mail" type="text" class="input-block-level" placeholder="邮箱地址">
+        <input name="password" id="password" type="password" class="input-block-level" placeholder="密码">
+        <button class="btn btn-large btn-primary" type="button" onclick="ajaxLogin()">登录</button>
+      </form>
+
+    </div> <!-- /container -->
+    <footer style="width: 100%; text-align: center;">
+      <p>&copy; (c) Copyright 2018 Sherivey Ruan. All Rights Reserved. <a href="mailto:qkmc@outlook.com">发送邮件</a>
+    </footer>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>

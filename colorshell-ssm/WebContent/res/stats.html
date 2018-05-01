@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>数据统计 - 彩贝后台管理</title>
+        <meta charset="UTF-8"/>
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="assets/styles.css" rel="stylesheet" media="screen">
+        <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="vendors/jquery-1.9.1.min.js"></script>
+        <script src="js/privilege.js"></script>
+        <script src="js/loginoff.js"></script>
+    </head>
+    
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">彩贝</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i>管理员<i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="javascript:loginoff();">退出登录</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li>
+                                <a href="#">主页</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">管理 <b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    <li>
+                                        <a href="#">终端用户管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">设备注册管理</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">当前数据</a>
+                                    </li>
+                                    <li  class="active">
+                                        <a href="#">数据分析</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li>
+                            <a href="index.html"><i class="icon-chevron-right"></i> 主页</a>
+                        </li>
+                        <li  class="active">
+                            <a href="stats.html"><i class="icon-chevron-right"></i>数据统计</a>
+                        </li>
+                        <li>
+                            <a href="tables.html"><i class="icon-chevron-right"></i> 用户&设备 管理</a>
+						</li>
+                    </ul>
+                </div>
+                <!--/span-->
+                <div class="span9" id="content">
+                      <!-- morris stacked chart -->
+                    <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">光照强度<small> 数据统计</small></div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <div id="illumination-area" style="height: 250px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                    
+                    <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">温度<small> 数据统计</small></div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <div id="temperature-area" style="height: 250px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                    
+                    <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">湿度<small> 数据统计</small></div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <div id="humidity-area" style="height: 250px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                    
+                    <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">湿度<small> 数据统计</small></div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <div id="ph-area" style="height: 250px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                    
+
+                    <!-- morris graph chart -->
+                    <div class="row-fluid section">
+                         <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">二氧化碳浓度 <small> 数据统计</small></div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <div id="hero-graph" style="height: 230px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                    
+                </div>
+            </div>
+            <hr>
+            <footer style="width: 100%; text-align: center;">
+                <p>&copy; (c) Copyright 2018 Sherivey Ruan. All Rights Reserved. <a href="mailto:qkmc@outlook.com">发送邮件</a>
+            </footer>
+        </div>
+        <!--/.fluid-container-->
+        <link rel="stylesheet" href="vendors/morris/morris.css">
+
+
+        <script src="vendors/jquery.knob.js"></script>
+        <script src="vendors/raphael-min.js"></script>
+        
+        <script src="vendors/morris/morris.min.js"></script>
+        
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendors/flot/jquery.flot.js"></script>
+        <script src="vendors/flot/jquery.flot.categories.js"></script>
+        <script src="vendors/flot/jquery.flot.pie.js"></script>
+        <script src="vendors/flot/jquery.flot.time.js"></script>
+        <script src="vendors/flot/jquery.flot.stack.js"></script>
+        <script src="vendors/flot/jquery.flot.resize.js"></script>
+        
+        <script src="assets/scripts.js"></script>
+        <script>
+        $(function() {
+
+        });
+        // Morris Line Chart  二氧化碳浓度
+        var tax_data = [
+            	{time: '2018-04-30 15:00:00', consistence: 15},
+                {time: '2018-04-30 15:05:00', consistence: 16},
+                {time: '2018-04-30 15:10:00', consistence: 17},
+                {time: '2018-04-30 15:15:00', consistence: 18},
+                {time: '2018-04-30 15:20:00', consistence: 19},
+                {time: '2018-04-30 15:25:00', consistence: 20},
+                {time: '2018-04-30 15:30:00', consistence: 19},
+                {time: '2018-04-30 15:35:00', consistence: 18},
+                {time: '2018-04-30 15:40:00', consistence: 17},
+                {time: '2018-04-30 15:45:00', consistence: 16}
+        ]
+        Morris.Line({
+            element: 'hero-graph',
+            data: tax_data,
+            xkey: 'time',
+            xLabels: "month",
+            ykeys: ['consistence'],
+            labels: ['二氧化碳农度(%)']
+        });
+        
+        // Morris Area Chart  光照强度
+        Morris.Area({
+            element: 'illumination-area',
+            data: [
+                {time: '2018-04-30 15:00:00', illumination: 2647},
+                {time: '2018-04-30 15:05:00', illumination: 2441},
+                {time: '2018-04-30 15:10:00', illumination: 2501},
+                {time: '2018-04-30 15:15:00', illumination: 5689},
+                {time: '2018-04-30 15:20:00', illumination: 2293},
+                {time: '2018-04-30 15:25:00', illumination: 1881},
+                {time: '2018-04-30 15:30:00', illumination: 1588},
+                {time: '2018-04-30 15:35:00', illumination: 5175},
+                {time: '2018-04-30 15:40:00', illumination: 2028},
+                {time: '2018-04-30 15:45:00', illumination: 1791}
+            ],
+            xkey: 'time',
+            ykeys: ['illumination'],
+            labels: ['光照(lx)'],
+            lineWidth: 2,
+            hideHover: 'auto',
+            lineColors: ["#FFC125"]
+          });
+          
+          Morris.Area({
+            element: 'ph-area',
+            data: [
+                {time: '2018-04-30 15:00:00', ph: 2647},
+                {time: '2018-04-30 15:05:00', ph: 2441},
+                {time: '2018-04-30 15:10:00', ph: 2501},
+                {time: '2018-04-30 15:15:00', ph: 5689},
+                {time: '2018-04-30 15:20:00', ph: 2293},
+                {time: '2018-04-30 15:25:00', ph: 1881},
+                {time: '2018-04-30 15:30:00', ph: 1588},
+                {time: '2018-04-30 15:35:00', ph: 5175},
+                {time: '2018-04-30 15:40:00', ph: 2028},
+                {time: '2018-04-30 15:45:00', ph: 1791}
+            ],
+            xkey: 'time',
+            ykeys: ['ph'],
+            labels: ['PH值'],
+            lineWidth: 2,
+            hideHover: 'auto',
+            lineColors: ["#87CEFA"]
+          });
+          
+          Morris.Area({
+            element: 'humidity-area',
+            data: [
+                {time: '2018-04-30 15:00:00', humidity: 2647},
+                {time: '2018-04-30 15:05:00', humidity: 2441},
+                {time: '2018-04-30 15:10:00', humidity: 2501},
+                {time: '2018-04-30 15:15:00', humidity: 5689},
+                {time: '2018-04-30 15:20:00', humidity: 2293},
+                {time: '2018-04-30 15:25:00', humidity: 1881},
+                {time: '2018-04-30 15:30:00', humidity: 1588},
+                {time: '2018-04-30 15:35:00', humidity: 5175},
+                {time: '2018-04-30 15:40:00', humidity: 2028},
+                {time: '2018-04-30 15:45:00', humidity: 1791}
+            ],
+            xkey: 'time',
+            ykeys: ['humidity'],
+            labels: ['湿度(%)'],
+            lineWidth: 2,
+            hideHover: 'auto',
+            lineColors: ["#ADD8E6"]
+          });
+          
+          Morris.Area({
+            element: 'temperature-area',
+            data: [
+                {time: '2018-04-30 15:00:00', temperature: 2647},
+                {time: '2018-04-30 15:05:00', temperature: 2441},
+                {time: '2018-04-30 15:10:00', temperature: 2501},
+                {time: '2018-04-30 15:15:00', temperature: 5689},
+                {time: '2018-04-30 15:20:00', temperature: 2293},
+                {time: '2018-04-30 15:25:00', temperature: 1881},
+                {time: '2018-04-30 15:30:00', temperature: 1588},
+                {time: '2018-04-30 15:35:00', temperature: 5175},
+                {time: '2018-04-30 15:40:00', temperature: 2028},
+                {time: '2018-04-30 15:45:00', temperature: 1791}
+            ],
+            xkey: 'time',
+            ykeys: ['temperature'],
+            labels: ['温度(℃)'],
+            lineWidth: 2,
+            hideHover: 'auto',
+            lineColors: ["#FFA54F"]
+          });
+
+        // Build jQuery Knobs
+        $(".knob").knob();
+
+        function labelFormatter(label, series) {
+            return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+        }
+        </script>
+    </body>
+</html>

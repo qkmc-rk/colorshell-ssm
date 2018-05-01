@@ -30,7 +30,7 @@
     from user
     where token = #{token,jdbcType=VARCHAR}
   </select>
-  <select id="selectByToken" resultMap="BaseResultMap">
+  <select id="selectSome" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
