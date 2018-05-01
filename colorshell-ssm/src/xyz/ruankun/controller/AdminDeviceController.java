@@ -27,7 +27,7 @@ import xyz.ruankun.service.UserService;
 import xyz.ruankun.util.MD5Encoder;
 
 @Controller
-@RequestMapping(value="/device")
+@RequestMapping(value="/admin/device")
 public class AdminDeviceController {
 
 	@Autowired

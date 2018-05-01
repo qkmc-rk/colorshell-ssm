@@ -92,24 +92,31 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
-                                    
-  									<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
-										<thead>
-											<tr>
-												<th>#</th>
-												<th>邮箱</th>
-												<th>昵称</th>
-												<th>角色</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="gradeU">
-												<td>1</td>
-												<td>qkmc@outlook.com</td>
-												<td>阮</td>
-												<td>管理员</td>
-											</tr>
-										</tbody>
+                                   <div class="table-toolbar">
+                                      <div class="btn-group">
+                                         <button name="adduser" data-toggle="modal" data-target="#adduser-modal" class="btn btn-success">新增 <i class="icon-plus icon-white"></i></button>
+                                         <button name="updateuser" class="btn btn-primary" disabled="disabled">修改 <i class="icon-pencil icon-white"></i></button>
+                                         <button name="deleteuser" class="btn btn-danger" disabled="disabled">删除 <i class="icon-remove icon-white"></i></button>
+                                      </div>
+                                      <div class="btn-group pull-right">
+                                         <button data-toggle="dropdown" class="btn dropdown-toggle">工具 <span class="caret"></span></button>
+                                         <ul class="dropdown-menu">
+                                            <li><a href="#">打印</a></li>
+                                            <li><a href="#">保存为PDF</a></li>
+                                            <li><a href="#">导出为EXCEL</a></li>
+                                         </ul>
+                                      </div>
+                                   </div> 
+  									<table id="usertable" data-page-size="5" data-toggle="table" data-single-select="true" data-select-item-name="usertablerow" data-show-refresh="true" data-show-toggle="true"  data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+									    <thead>
+									    <tr>
+									    	<th data-checkbox="true" >选择</th>
+									        <th data-field="id" data-sortable="true">#</th>
+									        <th data-field="mail">邮箱</th>
+									        <th data-field="neckname">昵称</th>
+									        <th data-field="role">角色类型</th>
+									    </tr>
+									    </thead>
 									</table>
                                 </div>
                             </div>
@@ -127,7 +134,9 @@
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
-                                         <a href=""><button class="btn btn-success">新增 <i class="icon-plus icon-white"></i></button></a>
+                                         <button name="adddevice" class="btn btn-success">新增 <i class="icon-plus icon-white"></i></button>
+                                         <button name="updatedevice" class="btn btn-primary" disabled="disabled">修改 <i class="icon-pencil icon-white"></i></button>
+                                         <button name="deletedevice" class="btn btn-danger" disabled="disabled">删除 <i class="icon-remove icon-white"></i></button>
                                       </div>
                                       <div class="btn-group pull-right">
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">工具 <span class="caret"></span></button>
@@ -138,25 +147,17 @@
                                          </ul>
                                       </div>
                                    </div>
-                                    
-                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>MAC地址</th>
-                                                <th>token</th>
-                                                <th>类型</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="odd gradeX">
-                                                <td>1</td>
-                                                <td>c2:43:ab:e2:d2</td>
-                                                <td class="center"> 4</td>
-                                                <td class="center">gas</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <table id="devicetable" data-page-size="5" data-toggle="table" data-single-select="true" data-select-item-name="devicetablerow"  data-show-refresh="true" data-show-toggle="true"  data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+									    <thead>
+									    <tr>
+									    	<th data-checkbox="true" >选择</th>
+									        <th data-field="id" data-sortable="true">#</th>
+									        <th data-field="mac">设备物理地址(MAC)</th>
+									        <th data-field="token">令牌信息</th>
+									        <th data-field="type">设备类型</th>
+									    </tr>
+									    </thead>
+									</table>
                                 </div>
                             </div>
                         </div>
@@ -164,6 +165,33 @@
                     </div>
                 </div>
             </div>
+            <!--这里全是modal  -->
+            <div class="my-modal">
+            	<!--增加用户的modal  -->
+            	<div class="modal fade" id="adduser-modal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span>
+								</button>
+								<h4>增加用户</h4>
+							</div>
+							<div class="modal-body">
+								<div id="useraddinfo">
+									
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" id="canceladduser" class="btn btn-primary" data-dismiss="modal">取消</button>
+								<button type="button" id="confirmadduser" class="btn btn-primary" onclick="adduser()">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--  -->
+            </div>
+            <!--上面这个div全是modal  -->
             <hr>
             <footer style="width: 100%; text-align: center;">
                 <p>&copy; (c) Copyright 2018 Sherivey Ruan. All Rights Reserved. <a href="mailto:qkmc@outlook.com">发送邮件</a>
@@ -172,8 +200,10 @@
         <!--/.fluid-container-->
 
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-table.js"></script>
+        <script src="js/tables/device.js"></script>
+        <script src="js/tables/user.js"></script>
         <script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
-
 
         <script src="assets/scripts.js"></script>
         <script src="assets/DT_bootstrap.js"></script>
