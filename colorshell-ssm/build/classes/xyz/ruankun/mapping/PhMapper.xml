@@ -20,7 +20,7 @@
     select 
     <include refid="Base_Column_List" />
     from ph
-    limit #{from},#{to}
+    order by id desc limit #{from},#{to}
   </select>
   <select id="selectOneRecently" resultMap="BaseResultMap">
     select 

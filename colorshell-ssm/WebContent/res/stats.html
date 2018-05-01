@@ -185,114 +185,61 @@
         <script src="vendors/flot/jquery.flot.resize.js"></script>
         
         <script src="assets/scripts.js"></script>
+        <script src="js/stats/stats.js"></script>
         <script>
-        $(function() {
-
-        });
         // Morris Line Chart  二氧化碳浓度
-        var tax_data = [
-            	{time: '2018-04-30 15:00:00', consistence: 15},
-                {time: '2018-04-30 15:05:00', consistence: 16},
-                {time: '2018-04-30 15:10:00', consistence: 17},
-                {time: '2018-04-30 15:15:00', consistence: 18},
-                {time: '2018-04-30 15:20:00', consistence: 19},
-                {time: '2018-04-30 15:25:00', consistence: 20},
-                {time: '2018-04-30 15:30:00', consistence: 19},
-                {time: '2018-04-30 15:35:00', consistence: 18},
-                {time: '2018-04-30 15:40:00', consistence: 17},
-                {time: '2018-04-30 15:45:00', consistence: 16}
-        ]
+        var gases_data = getGas();
         Morris.Line({
             element: 'hero-graph',
-            data: tax_data,
-            xkey: 'time',
+            data: gases_data,
+            xkey: 'creatime',
             xLabels: "month",
-            ykeys: ['consistence'],
+            ykeys: ['gas'],
             labels: ['二氧化碳农度(%)']
         });
-        
+
+        var illumination_data = getIllumination();
         // Morris Area Chart  光照强度
         Morris.Area({
             element: 'illumination-area',
-            data: [
-                {time: '2018-04-30 15:00:00', illumination: 2647},
-                {time: '2018-04-30 15:05:00', illumination: 2441},
-                {time: '2018-04-30 15:10:00', illumination: 2501},
-                {time: '2018-04-30 15:15:00', illumination: 5689},
-                {time: '2018-04-30 15:20:00', illumination: 2293},
-                {time: '2018-04-30 15:25:00', illumination: 1881},
-                {time: '2018-04-30 15:30:00', illumination: 1588},
-                {time: '2018-04-30 15:35:00', illumination: 5175},
-                {time: '2018-04-30 15:40:00', illumination: 2028},
-                {time: '2018-04-30 15:45:00', illumination: 1791}
-            ],
-            xkey: 'time',
+            data: illumination_data,
+            xkey: 'creatime',
             ykeys: ['illumination'],
             labels: ['光照(lx)'],
             lineWidth: 2,
             hideHover: 'auto',
             lineColors: ["#FFC125"]
           });
-          
+
+			var phs_data = getPh();
           Morris.Area({
             element: 'ph-area',
-            data: [
-                {time: '2018-04-30 15:00:00', ph: 2647},
-                {time: '2018-04-30 15:05:00', ph: 2441},
-                {time: '2018-04-30 15:10:00', ph: 2501},
-                {time: '2018-04-30 15:15:00', ph: 5689},
-                {time: '2018-04-30 15:20:00', ph: 2293},
-                {time: '2018-04-30 15:25:00', ph: 1881},
-                {time: '2018-04-30 15:30:00', ph: 1588},
-                {time: '2018-04-30 15:35:00', ph: 5175},
-                {time: '2018-04-30 15:40:00', ph: 2028},
-                {time: '2018-04-30 15:45:00', ph: 1791}
-            ],
-            xkey: 'time',
+            data:phs_data,
+            xkey: 'creatime',
             ykeys: ['ph'],
             labels: ['PH值'],
             lineWidth: 2,
             hideHover: 'auto',
             lineColors: ["#87CEFA"]
           });
-          
+
+          var humidities_data = getHumidity();
           Morris.Area({
             element: 'humidity-area',
-            data: [
-                {time: '2018-04-30 15:00:00', humidity: 2647},
-                {time: '2018-04-30 15:05:00', humidity: 2441},
-                {time: '2018-04-30 15:10:00', humidity: 2501},
-                {time: '2018-04-30 15:15:00', humidity: 5689},
-                {time: '2018-04-30 15:20:00', humidity: 2293},
-                {time: '2018-04-30 15:25:00', humidity: 1881},
-                {time: '2018-04-30 15:30:00', humidity: 1588},
-                {time: '2018-04-30 15:35:00', humidity: 5175},
-                {time: '2018-04-30 15:40:00', humidity: 2028},
-                {time: '2018-04-30 15:45:00', humidity: 1791}
-            ],
-            xkey: 'time',
+            data: humidities_data,
+            xkey: 'creatime',
             ykeys: ['humidity'],
             labels: ['湿度(%)'],
             lineWidth: 2,
             hideHover: 'auto',
             lineColors: ["#ADD8E6"]
           });
-          
+
+          var temperatures_data = getTemperature();
           Morris.Area({
             element: 'temperature-area',
-            data: [
-                {time: '2018-04-30 15:00:00', temperature: 2647},
-                {time: '2018-04-30 15:05:00', temperature: 2441},
-                {time: '2018-04-30 15:10:00', temperature: 2501},
-                {time: '2018-04-30 15:15:00', temperature: 5689},
-                {time: '2018-04-30 15:20:00', temperature: 2293},
-                {time: '2018-04-30 15:25:00', temperature: 1881},
-                {time: '2018-04-30 15:30:00', temperature: 1588},
-                {time: '2018-04-30 15:35:00', temperature: 5175},
-                {time: '2018-04-30 15:40:00', temperature: 2028},
-                {time: '2018-04-30 15:45:00', temperature: 1791}
-            ],
-            xkey: 'time',
+            data: temperatures_data,
+            xkey: 'creatime',
             ykeys: ['temperature'],
             labels: ['温度(℃)'],
             lineWidth: 2,
@@ -307,5 +254,6 @@
             return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
         }
         </script>
+        
     </body>
 </html>

@@ -106,25 +106,25 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span3">
-                                    <div class="chart" id="temperature-dashboard" data-percent="18">18℃</div>
-                                    <div class="chart-bottom-heading"><span class="label label-info">温度</span>
+                                    <div class="" id="temperature-dashboard" data-percent="11"><span id="temperature-dashboard-span">N/A</span></div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">温度 ℃</span>
 
                                     </div>
                                 </div>
                                 <div class="span3">
-                                    <div class="chart" id="humidity-dashboard" data-percent="53">53%</div>
-                                    <div class="chart-bottom-heading"><span class="label label-info">湿度</span>
+                                    <div class="" id="humidity-dashboard" data-percent="12"><span id="humidity-dashboard-span">N/A</span></div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">湿度%</span>
 
                                     </div>
                                 </div>
                                 <div class="span3">
-                                    <div class="chart" id="illumination-dashboard" data-percent="15.02">15.02(100)lx</div>
-                                    <div class="chart-bottom-heading"><span class="label label-info">光照</span>
+                                    <div class="" id="illumination-dashboard" data-percent="11"><span id="illumination-dashboard-span">N/A</span></div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">光照(100)lx</span>
 
                                     </div>
                                 </div>
                                 <div class="span3">
-                                    <div class="chart" id="ph-dashboard" data-percent="6.5">6.5</div>
+                                    <div class="" id="ph-dashboard" data-percent="56"><span id="ph-dashboard-span">N/A</span></div>
                                     <div class="chart-bottom-heading"><span class="label label-info">PH</span>
 
                                     </div>
@@ -137,8 +137,8 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span3" style="width: 100%;">
-                                    <div class="chart" id="gas-dashboard" data-percent="12">12%</div>
-                                    <div class="chart-bottom-heading"><span class="label label-info">CO2浓度</span>
+                                    <div class="" id="gas-dashboard" data-percent="0"><span id="gas-dashboard-span">N/A</span></div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">CO2浓度%</span>
                                     </div>
                                 </div>
                             </div>
@@ -153,13 +153,12 @@
                                     <div class="muted pull-left">最近光强</div>
                                 </div>
                                 <div class="block-content collapse in">
-                                    <table id="illuminationtable" data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-single-select="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                                    <table id="illuminationtable" data-page-size="3" data-toggle="table"  data-show-refresh="true" data-show-toggle="true"  data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 									    <thead>
 									    <tr>
-									        <th data-checkbox="true" >选择</th>
 									        <th data-field="id" data-sortable="true">#</th>
-									        <th data-field="illumination">值</th>
-									        <th data-field="creatime">创建时间</th>
+									        <th data-field="illumination">光强度(单位:lx)</th>
+									        <th data-field="creatime">采集时间</th>
 									        <th data-field="deviceid">设备#</th>
 									    </tr>
 									    </thead>
@@ -175,13 +174,12 @@
                                     <div class="muted pull-left">最近温度</div>
                                 </div>
                                 <div class="block-content collapse in">
-                                    <table id="temperaturetable" data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-single-select="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                                    <table id="temperaturetable"  data-page-size="3" data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 									    <thead>
 									    <tr>
-									        <th data-checkbox="true" >选择</th>
 									        <th data-field="id" data-sortable="true">#</th>
-									        <th data-field="temperature">值</th>
-									        <th data-field="creatime">创建时间</th>
+									        <th data-field="temperature">温度(单位:℃)</th>
+									        <th data-field="creatime">采集时间</th>
 									        <th data-field="deviceid">设备#</th>
 									    </tr>
 									    </thead>
@@ -199,13 +197,12 @@
                                     <div class="muted pull-left">最近湿度</div>
                                 </div>
                                 <div class="block-content collapse in">
-                                    <table id="humiditytable" data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-single-select="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                                    <table id="humiditytable" data-toggle="table"  data-page-size="3" data-show-refresh="true" data-show-toggle="true" data-single-select="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 									    <thead>
 									    <tr>
-									        <th data-checkbox="true" >选择</th>
 									        <th data-field="id" data-sortable="true">#</th>
-									        <th data-field="humidity">值</th>
-									        <th data-field="creatime">创建时间</th>
+									        <th data-field="humidity">湿度值(单位:%)</th>
+									        <th data-field="creatime">采集时间</th>
 									        <th data-field="deviceid">设备#</th>
 									    </tr>
 									    </thead>
@@ -221,13 +218,12 @@
                                     <div class="muted pull-left">最近二氧化碳浓度</div>
                                 </div>
                                 <div class="block-content collapse in">
-                                    <table id="gastable" data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-single-select="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                                    <table id="gastable" data-toggle="table" data-page-size="3"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true"  data-pagination="true" data-sort-name="name" data-sort-order="desc">
 									    <thead>
 									    <tr>
-									        <th data-checkbox="true" >选择</th>
 									        <th data-field="id" data-sortable="true">#</th>
-									        <th data-field="gas">值</th>
-									        <th data-field="creatime">创建时间</th>
+									        <th data-field="gas">二氧化碳浓度(单位:%)</th>
+									        <th data-field="creatime">采集时间</th>
 									        <th data-field="deviceid">设备#</th>
 									    </tr>
 									    </thead>
@@ -245,12 +241,11 @@
                                     <div class="muted pull-left">最近PH值</div>
                                 </div>
                                 <div class="block-content collapse in">
-                                    <table id="phtable" data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-single-select="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                                    <table id="phtable" data-toggle="table" data-page-size="3"  data-show-refresh="true" data-show-toggle="true" data-single-select="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 									    <thead>
 									    <tr>
-									        <th data-checkbox="true" >选择</th>
 									        <th data-field="id" data-sortable="true">#</th>
-									        <th data-field="ph">值</th>
+									        <th data-field="ph">PH值</th>
 									        <th data-field="creatime">创建时间</th>
 									        <th data-field="deviceid">设备#</th>
 									    </tr>
@@ -273,6 +268,9 @@
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>
         <script src="assets/scripts.js"></script>
+        <script src="js/bootstrap-table.js"></script>
+        <script src="js/index/dashboard.js"></script>
+        <script src="js/index/tables.js"></script>
         <script>
         $(function() {
             // Easy pie charts
