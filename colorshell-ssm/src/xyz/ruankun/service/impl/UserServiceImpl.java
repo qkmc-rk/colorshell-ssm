@@ -121,4 +121,33 @@ public class UserServiceImpl implements UserService{
 		}
 		return users;
 	}
+
+	@Override
+	public Integer updateUser(Integer id, String neckname, String role, String password) {
+		
+		User user = null;
+		try {
+			user = userMapper.selectByPrimaryKey(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(user == null) 
+			return -1;
+		else {
+			if(neckname != null && !neckname.equals("")) user.setNeckname(neckname);
+			if(role != null && !role.equals("") && (role.equals("admin") || role.equals("user"))) user.setRole(role);
+			if(password != null && !password.equals("")) {
+				password = MD5Encoder.encode(password);
+				user.setPassword(password);
+			} 
+			Integer rs = null;
+			try {
+				rs = userMapper.updateByPrimaryKeySelective(user);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return rs;
+		}
+		
+	}
 }

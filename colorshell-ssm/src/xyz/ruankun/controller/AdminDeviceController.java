@@ -27,7 +27,7 @@ import xyz.ruankun.service.UserService;
 import xyz.ruankun.util.MD5Encoder;
 
 @Controller
-@RequestMapping(value="/admin/device")
+@RequestMapping(value = "/admin/device")
 public class AdminDeviceController {
 
 	@Autowired
@@ -44,7 +44,7 @@ public class AdminDeviceController {
 	 * @param type 设备采集的类型
 	 * @return 是否注册设备成功
 	 */
-	@RequestMapping(value="/reg",method=RequestMethod.PUT)
+	@RequestMapping(value="/reg",method=RequestMethod.POST)
 	@ResponseBody
 	public String regDevice(@RequestParam String token,
 			@RequestParam  String mac,
@@ -61,9 +61,9 @@ public class AdminDeviceController {
 			returnBean.fail("mac地址错误");
 			return JSON.toJSONString(returnBean);
 		}
-		if(type == null || type.equals("") || !type.equals("temperature") || !type.equals("ph")
-				|| !type.equals("illumination") || !type.equals("humidity")
-				|| !type.equals("gas")){
+		if(type == null || type.equals("") || (!type.equals("temperature") && !type.equals("ph")
+				&& !type.equals("illumination") && !type.equals("humidity")
+				&& !type.equals("gas"))){
 			returnBean.fail("设备类型错误");
 			return JSON.toJSONString(returnBean);
 		}
@@ -92,20 +92,19 @@ public class AdminDeviceController {
 	/**
 	 * 删除一个设备
 	 * @param token 管理员的token
-	 * @param deviceId   设备的id号码
+	 * @param id   设备的id号码
 	 * @return 是否删除成功
 	 */
+	@RequestMapping(value="/{id}",method=RequestMethod.GET)//DELETE
 	@ResponseBody
-	@RequestMapping(value="/{deviceId}",method=RequestMethod.DELETE)
-	
-	public String deleteDevice(@RequestParam String token, @PathVariable Integer deviceId) {
+	public String deleteDevice(@PathVariable("id") Integer id, @RequestParam String token) {
 		//鉴权
 		ReturnBean<String> returnBean = new ReturnBean<>();
 		if(userService.getRole(token) != RoleConsts.ROLE_ADMIN) {
 			returnBean.fail("鉴权失败");
 			return JSON.toJSONString(returnBean);
 		}
-		Integer rs = deviceService.deleteOneDevice(deviceId);
+		Integer rs = deviceService.deleteOneDevice(id);
 		if(rs > 0) {
 			//删除成功
 			returnBean.success("删除设备成功");
@@ -117,8 +116,9 @@ public class AdminDeviceController {
 		}
 	} 
 	
-	@RequestMapping(value="/{deviceId}",method=RequestMethod.POST)
-	public String updateDevice(@PathVariable Integer deviceId,@RequestParam String token,
+	@RequestMapping(value="/{id}",method=RequestMethod.POST)
+	@ResponseBody
+	public String updateDevice(@RequestParam String token, @PathVariable Integer id,
 			@RequestParam String mac,@RequestParam String type) {
 		//鉴权
 		ReturnBean<String> returnBean = new ReturnBean<>();
@@ -127,7 +127,7 @@ public class AdminDeviceController {
 			return JSON.toJSONString(returnBean);
 		}
 		
-		Integer rs = deviceService.updateDevice(deviceId,mac,type);
+		Integer rs = deviceService.updateDevice(id,mac,type);
 		if(rs > 0) {
 			//删除成功
 			returnBean.success("更新设备成功");

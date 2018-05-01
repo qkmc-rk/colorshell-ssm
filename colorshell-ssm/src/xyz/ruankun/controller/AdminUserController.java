@@ -26,7 +26,7 @@ import xyz.ruankun.model.User;
 import xyz.ruankun.service.UserService;
 
 @Controller
-@RequestMapping("/admin/user")
+@RequestMapping(value = "/admin/user")
 public class AdminUserController {
 
 	@Autowired
@@ -45,12 +45,18 @@ public class AdminUserController {
 	 * @param neckname
 	 * @return
 	 */
-	@RequestMapping(value="/reg",method=RequestMethod.PUT)
+	@RequestMapping(value="/reg",method=RequestMethod.POST)//PUT
 	@ResponseBody
 	public String regist(@RequestParam String mail,
 			 @RequestParam  String password,
-			 @RequestParam(required = false)  String neckname) {
+			 @RequestParam(required = false)  String neckname,
+			 @RequestParam String token) {
 		ReturnBean<String> returnBean = new ReturnBean<>();
+		//鉴权
+		if(userService.getRole(token) != RoleConsts.ROLE_ADMIN) {
+			returnBean.fail("鉴权失败");
+			return JSON.toJSONString(returnBean);
+		}
 		//数据校验
 		if(mail == null || mail.equals("")) {
 			//mail为空
@@ -79,7 +85,7 @@ public class AdminUserController {
 	 * @param token 管理员的令牌信息
 	 * @return
 	 */
-	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
+	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	@ResponseBody
 	public String deleteUser(@PathVariable Integer id,@RequestParam String token) {
 		ReturnBean<String> returnBean = new ReturnBean<>();
@@ -106,15 +112,17 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/{id}",method=RequestMethod.POST)
 	@ResponseBody
-	public String updateUser(@PathVariable Integer id,@RequestParam String token) {
+	public String updateUser(@PathVariable Integer id, @RequestParam String token,
+			@RequestParam(required=false) String neckname, 
+			@RequestParam(required=false) String role,
+			@RequestParam(required=false) String password) {
 		ReturnBean<String> returnBean = new ReturnBean<>();
 		//鉴权
 		if(userService.getRole(token) != RoleConsts.ROLE_ADMIN) {
 			returnBean.fail("鉴权失败");
 			return JSON.toJSONString(returnBean);
 		}
-		Integer rs = userService.deleteUserById(id);
-		
+		Integer rs = userService.updateUser(id,neckname,role,password);
 		if(rs != null && rs > 0){
 			//删除成功
 			returnBean.success("删除用户成功");

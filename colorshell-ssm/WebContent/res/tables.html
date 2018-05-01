@@ -95,8 +95,8 @@
                                    <div class="table-toolbar">
                                       <div class="btn-group">
                                          <button name="adduser" data-toggle="modal" data-target="#adduser-modal" class="btn btn-success">新增 <i class="icon-plus icon-white"></i></button>
-                                         <button name="updateuser" class="btn btn-primary" disabled="disabled">修改 <i class="icon-pencil icon-white"></i></button>
-                                         <button name="deleteuser" class="btn btn-danger" disabled="disabled">删除 <i class="icon-remove icon-white"></i></button>
+                                         <button name="updateuser" data-toggle="modal" data-target="#updateuser-modal"  class="btn btn-primary" disabled="disabled">修改 <i class="icon-pencil icon-white"></i></button>
+                                         <button name="deleteuser" data-toggle="modal" data-target="#deleteuser-modal" class="btn btn-danger" disabled="disabled">删除 <i class="icon-remove icon-white"></i></button>
                                       </div>
                                       <div class="btn-group pull-right">
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">工具 <span class="caret"></span></button>
@@ -134,9 +134,9 @@
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
-                                         <button name="adddevice" class="btn btn-success">新增 <i class="icon-plus icon-white"></i></button>
-                                         <button name="updatedevice" class="btn btn-primary" disabled="disabled">修改 <i class="icon-pencil icon-white"></i></button>
-                                         <button name="deletedevice" class="btn btn-danger" disabled="disabled">删除 <i class="icon-remove icon-white"></i></button>
+                                         <button name="adddevice" data-toggle="modal" data-target="#adddevice-modal" class="btn btn-success">新增 <i class="icon-plus icon-white"></i></button>
+                                         <button name="updatedevice" data-toggle="modal" data-target="#updatedevice-modal" class="btn btn-primary" disabled="disabled">修改 <i class="icon-pencil icon-white"></i></button>
+                                         <button name="deletedevice" data-toggle="modal" data-target="#deletedevice-modal"  class="btn btn-danger" disabled="disabled">删除 <i class="icon-remove icon-white"></i></button>
                                       </div>
                                       <div class="btn-group pull-right">
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">工具 <span class="caret"></span></button>
@@ -179,7 +179,13 @@
 							</div>
 							<div class="modal-body">
 								<div id="useraddinfo">
-									
+                                    <input class="input-xlarge focused" id="mail" name="mail" type="text" placeholder="输入邮箱">
+                                    <input class="input-xlarge focused" id="password" name="password" type="password" placeholder="输入密码(不可见)">
+                                    <input class="input-xlarge focused" id="neckname" name="neckname" type="text" placeholder="输入昵称">
+                                    <!-- <select name="role" id="role">
+                                    	<option value="admin">管理员</option>
+                                    	<option value="user">普通用户</option>
+                                    </select> -->
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -189,7 +195,151 @@
 						</div>
 					</div>
 				</div>
-				<!--  -->
+				<!--./增加用户的modal  -->
+				
+				<!--更新用户的modal  -->
+            	<div class="modal fade" id="updateuser-modal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span>
+								</button>
+								<h4>更新用户信息</h4>
+							</div>
+							<div class="modal-body">
+								<div id="userupdateinfo">
+									<input class="input-xlarge focused" id="userid" name="id" type="text" placeholder="ID值" disabled="disabled">ID
+                                    <input class="input-xlarge focused" id="password2" name="password" type="password" placeholder="新的密码">
+                                    <input class="input-xlarge focused" id="neckname2" name="neckname" type="text" placeholder="昵称">
+                                    <br /><select name="role" id="role">
+                                    	<option value="admin">管理员</option>
+                                    	<option value="user">普通用户</option>
+                                    </select>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" id="cancelupdateuser" class="btn btn-primary" data-dismiss="modal">取消</button>
+								<button type="button" id="confirmupdateuser" class="btn btn-primary" onclick="updateUser()">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--./更新用户的modal  -->
+				
+				<!--更新设备的modal  -->
+            	<div class="modal fade" id="updatedevice-modal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span>
+								</button>
+								<h4>更新设备信息</h4>
+							</div>
+							<div class="modal-body">
+								<div id="deviceupdateinfo">
+									<input class="input-xlarge focused" id="deviceid" name="id" type="text" placeholder="ID值" disabled="disabled">ID
+                                    <input class="input-xlarge focused" id="mac2" name="mac" type="text" placeholder="物理地址">
+                                    <input class="input-xlarge focused" id="token2" name="token" type="text" placeholder="令牌信息">
+                                    <br /><select name="type" id="type">
+                                    	<option value="humidity">湿度传感器</option>
+                                    	<option value="temperature">温度传感器</option>
+                                    	<option value="illumination">光照传感器</option>
+                                    	<option value="gas">二氧化碳传感器</option>
+                                    	<option value="ph">土壤ph传感器</option>
+                                    </select>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" id="cancelupdateuser" class="btn btn-primary" data-dismiss="modal">取消</button>
+								<button type="button" id="confirmupdateuser" class="btn btn-primary" onclick="updateDevice()">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--./更新设备的modal  -->
+				
+				<!--增加设备的modal  -->
+            	<div class="modal fade" id="adddevice-modal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span>
+								</button>
+								<h4>增加设备</h4>
+							</div>
+							<div class="modal-body">
+								<div id="deviceaddinfo">
+									<input class="input-xlarge focused" id="mac" name="mac" type="text" placeholder="输入MAC地址">
+									<!-- <input class="input-xlarge focused" id="token" name="token" type="text" disabled="disabled" placeholder="Token,自动生成"><button type="button" class="btn btn-primary" onclick="generateToken()" style="margin-left:10px; margin-bottom:10px;">生成token</button> -->
+									<br /><span>节点类型：</span>
+									<select name="type" id="type">
+										<option value="humidity">湿度数据采集节点</option>
+										<option value="illumination">光度数据采集节点</option>
+										<option value="temperature">温度数据采集节点</option>
+										<option value="gas">二氧化碳浓度数据采集节点</option>
+										<option value="ph">土壤ph值数据采集节点</option>
+									</select>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" id="canceladduser" class="btn btn-primary" data-dismiss="modal">取消</button>
+								<button type="button" id="confirmadduser" class="btn btn-primary" onclick="adddevice()">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--./增加设备的modal  -->
+				
+				<!--删除用户的modal  -->
+            	<div class="modal fade" id="deleteuser-modal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span>
+								</button>
+								<h4>删除终端用户</h4>
+							</div>
+							<div class="modal-body">
+								<div id="userdeleteinfo">
+									<h3>确认删除选中用户吗？</h3>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" id="canceladduser" class="btn btn-primary" data-dismiss="modal">取消</button>
+								<button type="button" id="confirmadduser" class="btn btn-primary" onclick="deleteuser()">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--./删除用户的modal  -->
+				
+				<!--删除device的modal  -->
+            	<div class="modal fade" id="deletedevice-modal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span>
+								</button>
+								<h4>删除设备信息</h4>
+							</div>
+							<div class="modal-body">
+								<div id="devicedeleteinfo">
+									<h3>确认删除选中设备信息吗？</h3>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" id="canceldeletedevice" class="btn btn-primary" data-dismiss="modal">取消</button>
+								<button type="button" id="confirmdeletedevice" class="btn btn-primary" onclick="deletedevice()">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--./删除用户的modal  -->
             </div>
             <!--上面这个div全是modal  -->
             <hr>
@@ -201,10 +351,11 @@
 
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="js/bootstrap-table.js"></script>
+        <script src="js/md5.js"></script>
         <script src="js/tables/device.js"></script>
         <script src="js/tables/user.js"></script>
         <script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
-
+		
         <script src="assets/scripts.js"></script>
         <script src="assets/DT_bootstrap.js"></script>
         <script>

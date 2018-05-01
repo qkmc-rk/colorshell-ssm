@@ -49,4 +49,14 @@ public interface UserService {
 	Integer getRole(String token);
 
 	List<User> getAll(Integer start, Integer limit);
+
+	/**
+	 * 更新用户的信息
+	 * @param id
+	 * @param neckname
+	 * @param role
+	 * @param password
+	 * @return
+	 */
+	Integer updateUser(Integer id, String neckname, String role, String password);
 }

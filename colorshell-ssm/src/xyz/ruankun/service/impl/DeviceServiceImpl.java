@@ -57,11 +57,15 @@ public class DeviceServiceImpl implements DeviceService {
 
 	@Override
 	public Integer updateDevice(Integer deviceId, String mac, String type) {
-		Device device = new Device();
-		device.setId(deviceId);
+		
+		Device device = deviceMapper.selectByPrimaryKey(deviceId);
+		
 		device.setMac(mac);
+		
 		device.setType(type);
+		
 		Integer rs = null;
+		
 		try {
 			rs = deviceMapper.updateByPrimaryKeySelective(device);
 		} catch (Exception e) {
