@@ -36,5 +36,12 @@ public interface DeviceService {
 	Integer updateDevice(Integer deviceId, String mac, String type);
 
 	List<Device> getAll();
+	
+	/**
+	 * 通过设备的token查找一个设备
+	 * @param token
+	 * @return device
+	 */
+	Device getOneDeviceByToken(String token);
 
 }

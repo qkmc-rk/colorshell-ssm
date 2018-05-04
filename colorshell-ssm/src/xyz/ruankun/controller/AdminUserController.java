@@ -125,10 +125,10 @@ public class AdminUserController {
 		Integer rs = userService.updateUser(id,neckname,role,password);
 		if(rs != null && rs > 0){
 			//删除成功
-			returnBean.success("删除用户成功");
+			returnBean.success("更新用户成功");
 			return JSON.toJSONString(returnBean);
 		}else {
-			returnBean.fail("删除用户失败！");
+			returnBean.fail("更新用户失败！");
 			return JSON.toJSONString(returnBean);
 		}
 	}

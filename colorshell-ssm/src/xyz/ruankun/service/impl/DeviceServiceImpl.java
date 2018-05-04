@@ -79,4 +79,15 @@ public class DeviceServiceImpl implements DeviceService {
 		List<Device> devices = deviceMapper.selectAll();
 		return devices;
 	}
+
+	@Override
+	public Device getOneDeviceByToken(String token) {
+		Device device = null;
+		try {
+			device = deviceMapper.selectByToken(token);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return device;
+	}
 }

@@ -26,4 +26,6 @@ public interface DeviceMapper {
 	Device selectByMac(String mac);
 
 	List<Device> selectAll();
+
+	Device selectByToken(String token);
 }

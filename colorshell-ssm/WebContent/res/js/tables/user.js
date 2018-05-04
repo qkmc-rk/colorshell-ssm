@@ -46,7 +46,7 @@ function refreshUserTable(){
 			$('#usertable').bootstrapTable('load', data);
 		},
 		error:function(){
-			alert('访问错误');
+			$.jGrowl("访问错误");
 		}
 	});
 }
@@ -77,9 +77,9 @@ function adduser(){
                 $("#adduser-modal").modal('hide');
                 //刷新表格
                 refreshUserTable();
-                alert('注册成功');
+                $.jGrowl(datas.data);
             }else{
-            	alert('注册失败');
+            	$.jGrowl(datas.data);
             }
            
         }
@@ -106,9 +106,9 @@ function deleteuser(){
                 closeUserBtn();
                 refreshUserTable();
                 $("#deleteuser-modal").modal('hide');
-                alert(datas.data);
+                $.jGrowl(datas.data);
         	}else{
-        		alert(datas.data);
+        		$.jGrowl(datas.data);
         	}
         	
         }
@@ -147,8 +147,9 @@ function updateUser(){
                 closeUserBtn();
                 $("#updateuser-modal").modal('hide');
                 refreshUserTable();
+                $.jGrowl(datas.data);
         	}else{
-        		alert(datas.data);
+        		 $.jGrowl(datas.data);
         	}
         }
     });

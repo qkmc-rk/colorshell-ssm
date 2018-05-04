@@ -44,7 +44,7 @@ function refreshDeviceTable(){
 			$('#devicetable').bootstrapTable('load', data);
 		},
 		error:function(){
-			alert('访问错误');
+			$.jGrowl("访问错误");
 		}
 	});
 }
@@ -73,9 +73,9 @@ function adddevice(){
                 $("#adddevice-modal").modal('hide');
                 //刷新表格
                 refreshDeviceTable();
-                alert(datas.data);
+                $.jGrowl(datas.data);
             }else{
-            	alert(datas.data);
+            	$.jGrowl(datas.data);
             }
            
         }
@@ -103,9 +103,9 @@ function deletedevice(){
                 closeDeviceBtn();
                 refreshDeviceTable();
                 $("#deletedevice-modal").modal('hide');
-                alert(datas.data);
+                $.jGrowl(datas.data);
         	}else{
-        		alert(datas.data);
+        		$.jGrowl(datas.data);
         	}
         	
         }
@@ -143,8 +143,9 @@ function updateDevice(){
                 closeDeviceBtn();
                 $("#updatedevice-modal").modal('hide');
                 refreshDeviceTable();
+                $.jGrowl("修改成功");
         	}else{
-        		alert(datas.data);
+        		$.jGrowl(datas.data);
         	}
         }
     });
