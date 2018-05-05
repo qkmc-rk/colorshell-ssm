@@ -10,7 +10,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import xyz.ruankun.model.Ph;
 import xyz.ruankun.model.Temperatrue;
 
 public interface TemperatrueMapper {

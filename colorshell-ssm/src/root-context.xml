@@ -80,4 +80,7 @@
 		<property name="mailSender" ref="mailSender"></property>
 		<property name="templateMailMessage" ref="templateMessage"></property>
 	</bean>
+	
+	<bean id="deviceServer" class="xyz.ruankun.net.DeviceServer">
+	</bean>
 </beans>

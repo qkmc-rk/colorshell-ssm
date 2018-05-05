@@ -7,6 +7,12 @@
 <title>colorshell</title>
 </head>
 <body>
-	<h1>welcome to colorshell admin</h1>
+	<h1 style="color: green; text-align:center; width:100%; margin-left:auto; margin-right:auto;margin-top:200px;">Color Shell</h1>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			window.location.href='res/login.html';
+		});
+	</script>
 </body>
 </html>
